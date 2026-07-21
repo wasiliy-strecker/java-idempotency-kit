@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>io.github.wasiliy-strecker</groupId>
+    <artifactId>java-idempotency-kit-parent</artifactId>
+    <version>0.1.0</version>
+  </parent>
+  <artifactId>idempotency-spring-boot-starter</artifactId>
+  <name>Java Idempotency Kit :: Spring Boot Starter</name>
+  <dependencies>
+    <dependency>
+      <groupId>io.github.wasiliy-strecker</groupId>
+      <artifactId>idempotency-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.github.wasiliy-strecker</groupId>
+      <artifactId>idempotency-store-memory</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.github.wasiliy-strecker</groupId>
+      <artifactId>idempotency-store-jdbc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.github.wasiliy-strecker</groupId>
+      <artifactId>idempotency-spring-boot-autoconfigure</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-aspectj</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jdbc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jackson</artifactId>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>

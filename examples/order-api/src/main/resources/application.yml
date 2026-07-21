@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: idempotent-order-api
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/orders}
+    username: ${DATABASE_USER:orders}
+    password: ${DATABASE_PASSWORD:orders}
+  flyway:
+    locations:
+      - classpath:db/idempotency/postgresql
+      - classpath:db/migration
+
+server:
+  shutdown: graceful
+
+idempotency-kit:
+  store: jdbc
+  retention: 24h
+  lease: 30s
+  max-result-bytes: 1048576
+  validate-schema: true
+  cleanup:
+    enabled: true
+    interval: 10m
+    batch-size: 500
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      probes:
+        enabled: true

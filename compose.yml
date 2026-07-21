@@ -1,0 +1,33 @@
+services:
+  postgres:
+    image: postgres:18.3-alpine
+    environment:
+      POSTGRES_DB: orders
+      POSTGRES_USER: orders
+      POSTGRES_PASSWORD: orders
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U orders -d orders"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    ports:
+      - "5432:5432"
+    volumes:
+      - order-data:/var/lib/postgresql
+
+  order-api:
+    build:
+      context: .
+      dockerfile: examples/order-api/Dockerfile
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/orders
+      DATABASE_USER: orders
+      DATABASE_PASSWORD: orders
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+
+volumes:
+  order-data:
