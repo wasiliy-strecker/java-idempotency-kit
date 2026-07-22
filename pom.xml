@@ -156,6 +156,7 @@
           <artifactId>maven-failsafe-plugin</artifactId>
           <version>${failsafe-plugin.version}</version>
           <configuration>
+            <classesDirectory>${project.build.outputDirectory}</classesDirectory>
             <useModulePath>false</useModulePath>
           </configuration>
         </plugin>
