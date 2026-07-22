@@ -14,10 +14,6 @@ class OrderService {
   private final OrderRepository repository;
   private final Clock clock;
 
-  OrderService(OrderRepository repository) {
-    this(repository, Clock.systemUTC());
-  }
-
   OrderService(OrderRepository repository, Clock clock) {
     this.repository = repository;
     this.clock = clock;
