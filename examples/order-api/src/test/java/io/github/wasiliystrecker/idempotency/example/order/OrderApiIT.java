@@ -19,7 +19,9 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.postgresql.PostgreSQLContainer;
 
 @Testcontainers
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(
+    classes = OrderApiApplication.class,
+    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 final class OrderApiIT {
   @Container
   private static final PostgreSQLContainer POSTGRES =
